@@ -24,11 +24,32 @@ function dirtree(dir)
 end
 
 dir = script_path()
-f=io.open(dir.."config/generated.lua", "w")
+f=io.open(dir.."generated.lua", "w")
+
 f:write("merge(overwrite_graphics,{\n")
+print("finding textures ...")
 for filename, attr in dirtree(dir) do
-  if filename:sub(-4) == ".png" then
-    f:write("  [\""..filename:gsub(dir:gsub("%-","%%-"),"").."\"]=replace{},\n")
+  filename = filename:gsub(dir:gsub("%-","%%-"),"")
+  if filename:sub(1,2) == "__" and filename:sub(-4) == ".png" and not string.find("/"..filename, "/%.") then
+    f:write("  [\""..filename.."\"]=replace{},\n")
   end
 end
-f:write("})")
+f:write("})\n")
+
+print("finding scripts ...")
+for filename, attr in dirtree(dir) do
+  filename = filename:gsub(dir:gsub("%-","%%-"),"")
+  if filename:sub(1,2) == "__" and filename:sub(-4) == ".lua" and not string.find("/"..filename, "/%.") then
+    f:write("prequire(\""..filename:sub(1,-5):gsub("/",".").."\")\n")
+  end
+end
+
+--~ print("building file sumary ...")
+--~ f:write("files = {\n")
+--~ for filename, attr in dirtree(dir) do
+	--~ filename = filename:gsub(dir:gsub("%-","%%-"),"")
+	--~ if not string.find("/"..filename, "/%.") then
+		--~ f:write("  \""..filename.."\",\n")
+	--~ end
+--~ end
+--~ f:write("}\n")
