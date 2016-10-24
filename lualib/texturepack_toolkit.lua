@@ -7,10 +7,10 @@ function prequire(f)
   -- protected variant of require
   local s,e=pcall(function()require(f)end)
   if not s then
-    if type(value)=="string" then
+    if type(e)=="string" then
       print(f..":"..e)
     else
-      print(f..": can't load "..findmodname().."/"..string.gsub(f, "%.", "/")..".lua")
+      print(f..": can't load "..modname.."/"..string.gsub(f, "%.", "/")..".lua")
     end
   end
 end
@@ -34,7 +34,9 @@ end
 
 overwrite_data = {}
 overwrite_graphics = {}
-modname = findmodname()
+--modname = findmodname()
+modname = "updated-graphics"
+print(modname)
 
 ------ Methods updating texture list ------
 function merge(t1,t2)
@@ -62,7 +64,7 @@ end
 function replace(r)
   --replace the texture with the new version and apply modifications on neighbors keys
   return function(n,p,i)
-    p[i]=string.gsub(p[i],"(__[a-zA-Z0-9]+__)",findmodname().."/%1")
+    p[i]=string.gsub(p[i],"(__.[^/]+__)","__"..modname.."__/%1")
     if r ~= nil then
       for k,v in pairs(r) do
         p[k]=v
