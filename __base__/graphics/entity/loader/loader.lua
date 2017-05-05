@@ -1,5 +1,4 @@
-function custom(r)
-  -- custom
+local function customloader(r)
   return function(n,p,i)
     if p.type == "loader" then
       p.structure.direction_in.sheet.filename = "__base__/graphics/entity/loader/"..p.name.."-structure.png"
@@ -15,7 +14,7 @@ function custom(r)
 end
 
 merge(overwrite_graphics,{
-  ["__base__/graphics/icons/loader.png"]=custom{},
+  ["__base__/graphics/icons/loader.png"]=customloader{},
   ["__base__/graphics/entity/loader/loader-structure.png"]=replace{width = 96},
   ["__base__/graphics/entity/loader/fast-loader-structure.png"]=replace{width = 96},
   ["__base__/graphics/entity/loader/express-loader-structure.png"]=replace{width = 96},

@@ -1,11 +1,11 @@
 {
   "name":"updated-graphics",
-  "version":"0.14.0",
+  "version":"0.15.0",
   "title":"Updated Graphics",
   "author":"Y.Petremann",
   "homepage":"",
   "license":"MIT License",
-  "description":"This mod change some graphics to be better.",
-  "dependencies": ["? color-coding", "? Modular-Armor"],
-  "factorio_version": "0.14"
+  "description":"Updated Graphics Pack.",
+  "dependencies": ["? color-coding", "? Modular-Armor", "? ResearchRevolution"],
+  "factorio_version": "0.15"
 }

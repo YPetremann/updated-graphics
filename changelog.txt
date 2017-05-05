@@ -1,15 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.12.1
-Date: 06. 08. 2015
+Version: 0.15.0
+Date: 04. 05. 2017
   Features:
-    - Update almost all icons with newest one when possible.
-    - Update specific icons to fancier ones.
-    - Advanced script to install modified core graphics and restore original core graphics.
+    - Update dynamicaly almost any graphic part of the game.
   Changes:
     - Science pack icons now are related to technology level.
     - Coins icon is now a coin stack.
     - Furnace use an abandonned concept.
   Advanced Changes:
-    - Wires are more cisible.
+    - Wires are more visible.
     - Fix the alt black background.
     - Fancier menu background image (official).

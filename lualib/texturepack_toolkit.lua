@@ -36,7 +36,6 @@ overwrite_data = {}
 overwrite_graphics = {}
 --modname = findmodname()
 modname = "updated-graphics"
-print(modname)
 
 ------ Methods updating texture list ------
 function merge(t1,t2)
