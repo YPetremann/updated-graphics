@@ -1,16 +1,19 @@
 local function customloader(r)
-  return function(n,p,i)
-    if p.type == "loader" then
-      p.structure.direction_in.sheet.filename = "__base__/graphics/entity/loader/"..p.name.."-structure.png"
-      p.structure.direction_out.sheet.filename = "__base__/graphics/entity/loader/"..p.name.."-structure.png"
-    end
-    p[i]=string.gsub(p[i],"(__.[^/]+__)","__"..modname.."__/%1")
-    if r ~= nil then
-      for k,v in pairs(r) do
-        p[k]=v
-      end
-    end
-  end
+	return function(n,p,i)
+		if p.icon then
+			p.icon = "__base__/graphics/icons/"..p.name..".png"
+		end
+		if p.type == "loader" then
+			p.structure.direction_in.sheet.filename = "__base__/graphics/entity/loader/"..p.name.."-structure.png"
+			p.structure.direction_out.sheet.filename = "__base__/graphics/entity/loader/"..p.name.."-structure.png"
+		end
+		p[i]=string.gsub(p[i],"(__.[^/]+__)","__"..modname.."__/%1")
+		if r ~= nil then
+			for k,v in pairs(r) do
+				p[k]=v
+			end
+		end
+	end
 end
 
 merge(overwrite_graphics,{

@@ -7,8 +7,12 @@ COPY=\
 	__base__/graphics/icons/loader.png
 
 all: $(COPY)
-	lua ./update.lua
+	BASENAME=$$(basename $$(pwd));	cd ..; lua $$BASENAME/update.lua
 
+release:
+	BASENAME=$$(basename .)\
+	cd ..\
+	zip $$(BASENAME).zip $$(BASENAME)
 clean: $(COPY)
 	rm $^
 	cd __add-loader__/graphics/; $(MAKE) clean
